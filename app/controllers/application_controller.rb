@@ -34,7 +34,10 @@ patch '/recipes/:id' do
 end
 
 get '/recipes/new' do
-  @recipe = Recipe.new(params[:name], params[:ingredients], params[:cook_time])
+  @recipe = Recipe.new(params[:id])
+@recipe.name = params[:name]
+@recipe.ingredients = params[:ingredients]
+@recipe.cook_time = params[:cook_time]
   @recipe.save
   erb :new
 end
